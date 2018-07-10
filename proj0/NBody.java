@@ -34,6 +34,11 @@ public class NBody {
             xForce[2] = P[2].calcNetForceExertedByX(new Planet[]{P[1],P[0],P[3],P[4]});
             xForce[3] = P[3].calcNetForceExertedByX(new Planet[]{P[1],P[2],P[0],P[4]});
             xForce[4] = P[4].calcNetForceExertedByX(new Planet[]{P[1],P[2],P[3],P[0]});
+            yForce[0] = P[0].calcNetForceExertedByY(new Planet[]{P[1],P[2],P[3],P[4]});
+            yForce[1] = P[1].calcNetForceExertedByY(new Planet[]{P[0],P[2],P[3],P[4]});
+            yForce[2] = P[2].calcNetForceExertedByY(new Planet[]{P[1],P[0],P[3],P[4]});
+            yForce[3] = P[3].calcNetForceExertedByY(new Planet[]{P[1],P[2],P[0],P[4]});
+            yForce[4] = P[4].calcNetForceExertedByY(new Planet[]{P[1],P[2],P[3],P[0]});
             for (int i = 0; i < num; i++)
                 P[i].update(dt,xForce[i],yForce[i]);
             for (Planet p : P)
