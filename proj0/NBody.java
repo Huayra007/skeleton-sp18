@@ -12,7 +12,7 @@ public class NBody {
         double radius = in.readDouble();
         Planet P[] = new Planet[num];
         for (int i = 0; i < num; i++)
-            P[i] = new Planet(in.readDouble(),in.readDouble(),in.readDouble(),in.readDouble(),in.readDouble(),in.readString());
+            P[i] = new Planet(in.readDouble(),in.readDouble(),in.readDouble(),in.readDouble(),in.readDouble(),"images/" + in.readString());
         return P;
     }
 
@@ -23,9 +23,9 @@ public class NBody {
         double radius = readRadius(filename);
         Planet[] P = readPlanets(filename);
         int num = P.length;
-        P[0].draw();
+        StdDraw.setScale(-radius,radius);
         StdDraw.enableDoubleBuffering();
-        StdDraw.show();
+
         for (double t = 0; t < T; t += dt){
             double xForce[] = new double[num];
             double yForce[] = new double[num];
@@ -41,10 +41,14 @@ public class NBody {
             yForce[4] = P[4].calcNetForceExertedByY(new Planet[]{P[1],P[2],P[3],P[0]});
             for (int i = 0; i < num; i++)
                 P[i].update(dt,xForce[i],yForce[i]);
+            StdDraw.clear();
+            StdDraw.picture(0,0,"images/starfield.jpg");
             for (Planet p : P)
                 p.draw();
             StdDraw.show();
             StdDraw.pause(10);
+
         }
+
     }
 }
