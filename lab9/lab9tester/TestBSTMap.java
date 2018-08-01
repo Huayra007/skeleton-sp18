@@ -2,8 +2,12 @@ package lab9tester;
 
 import static org.junit.Assert.*;
 
+import edu.princeton.cs.algs4.BST;
 import org.junit.Test;
 import lab9.BSTMap;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Tests by Brendan Hu, Spring 2015, revised for 2018 by Josh Hug
@@ -84,6 +88,18 @@ public class TestBSTMap {
         b.put("hi", 1);
         assertTrue(b.containsKey("hi"));
         assertTrue(b.get("hi") != null);
+    }
+
+    @Test
+    public void test(){
+        BSTMap<String, Integer> b = new BSTMap<>();
+        b.put("hi",1);
+        b.put("cat",4);
+        b.put("dog",3);
+        b.put("apale",2);
+        Set<String> set = b.keySet();
+        for (String s : b)
+            System.out.println(s + " " + b.get(s));
     }
 
     public static void main(String[] args) {

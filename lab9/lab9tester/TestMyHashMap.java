@@ -58,6 +58,15 @@ public class TestMyHashMap {
         b.put("KISS", 5);
         assertNotEquals(null, b.get("KISS"));
         assertNotEquals(null, b.get("starChild"));
+        for (String s : b)
+            System.out.println(s);
+        b.remove("starChild",3);
+        assertEquals(5,b.get("starChild").longValue());
+        b.remove("starChild",5);
+        assertFalse(b.containsKey("starChild"));
+
+        for (String s : b)
+            System.out.println(s);
     }
 
     // assumes put works
@@ -78,7 +87,7 @@ public class TestMyHashMap {
     public void sanityPutTest() {
         MyHashMap<String, Integer> b = new MyHashMap<String, Integer>();
         b.put("hi", 1);
-        assertTrue(b.containsKey("hi") && b.get("hi") != null);
+        assertTrue(b.containsKey("hi") && b.get("hi") == 1);
     }
 
     /*
@@ -126,6 +135,7 @@ public class TestMyHashMap {
         assertEquals(345, studentIDs.get("evil alan").intValue());
         assertEquals(studentIDs.get("evil alan"), studentIDs.get("alan"));
     }
+
 
     public static void main(String[] args) {
         jh61b.junit.TestRunner.runTests(TestMyHashMap.class);
